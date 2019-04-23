@@ -1,3 +1,4 @@
+from social_reach.views import CurrentUserDetail, LikeDetail, MatchDetail, ListCategoryView, ListProfileView, UserList, UserDetail, ProfileDetail, ListMatchView, ListLikesView
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.views import generic
@@ -23,7 +24,6 @@ from rest_framework_jwt.views import verify_jwt_token
 
 router = DefaultRouter()
 router.register('users', djoserviews.UserViewSet)
-from social_reach.views import CurrentUserDetail, LikeDetail, MatchDetail, ListCategoryView, ListProfileView, UserList, UserDetail, ProfileDetail, ListMatchView, ListLikesView
 
 
 app_name = 'social_reach'
@@ -36,8 +36,10 @@ urlpatterns = [
     url(r'logout/$', views.user_logout, name='logout'),
     url(r'restricted/$', views.restricted, name='restricted'),
     url(r'add_category/$', views.add_category, name='add_category'),
-    url(r'category/(?P<category_slug_url>[\w\-]+)/add-page/$', views.add_page, name='add_page'),
-    url(r'category/(?P<category_name_url>[\w\-]+)/$', views.show_category, name='show_category'),
+    url(r'category/(?P<category_slug_url>[\w\-]+)/add-page/$',
+        views.add_page, name='add_page'),
+    url(r'category/(?P<category_name_url>[\w\-]+)/$',
+        views.show_category, name='show_category'),
     url(r'user/(?P<username>[\w\-]+)/$', views.show_user, name='show_user'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^goto/$', views.track_url, name='track_url'),
@@ -49,19 +51,26 @@ urlpatterns = [
     url(r'^profiles/(?P<pk>\d+)/$', ProfileDetail.as_view(), name='profile_detail'),
 
     # Find profile within for search parameters e.g. age, distance etc
-    url(r'^profiles/(?P<username>[\w\-]+)/minage=(?P<min_age>\d+)/maxage=(?P<max_age>\d+)/maxdistance=(?P<max_distance>\d+)/$', views.ProfilesWhichMeetSearchCriteria.as_view(), name='profiles_which_meet_search_criteria'),
+    url(r'^profiles/(?P<username>[\w\-]+)/minage=(?P<min_age>\d+)/maxage=(?P<max_age>\d+)/maxdistance=(?P<max_distance>\d+)/$',
+        views.ProfilesWhichMeetSearchCriteria.as_view(), name='profiles_which_meet_search_criteria'),
 
-    url(r'^profiles/(?P<username>[\w\-]+)/$', views.ProfileByUsername.as_view(), name='profile_username'),
+    url(r'^profiles/(?P<username>[\w\-]+)/$',
+        views.ProfileByUsername.as_view(), name='profile_username'),
     url(r'^users/$', UserList.as_view(), name='user-list'),
     url(r'^users/(?P<pk>\d+)/$', views.get_user_password, name='user_detail'),
-    url(r'^users/(?P<username>[\w\-]+)/$', CurrentUserDetail.as_view(), name='current_user_detail'),
-    url(r'^users/find/(?P<username>[\w\-]+)/$', views.SpecificUserDetail.as_view(), name='specific_user_detail'),
+    url(r'^users/(?P<username>[\w\-]+)/$',
+        CurrentUserDetail.as_view(), name='current_user_detail'),
+    url(r'^users/find/(?P<username>[\w\-]+)/$',
+        views.SpecificUserDetail.as_view(), name='specific_user_detail'),
     # For sending link to reset password
-    url(r'^users/reset_password/(?P<username>[\w\-]+)/$', views.UserPasswordResetEmail.as_view(), name='specific_user_detail'),
+    url(r'^users/reset_password/(?P<username>[\w\-]+)/$',
+        views.UserPasswordResetEmail.as_view(), name='specific_user_detail'),
     # For making post request to actually reset password
-    url(r'^users/reset_password/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$', views.UserPasswordReset.as_view(), name='user_password_reset'),
+    url(r'^users/reset_password/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$',
+        views.UserPasswordReset.as_view(), name='user_password_reset'),
     url(r'^mutual_likes/$', ListMatchView.as_view(), name="mutual_likes"),
-    url(r'^mutual_likes/(?P<pk>[\w\-]+)/$', MatchDetail.as_view(), name="mutual_like_detail"),
+    url(r'^mutual_likes/(?P<pk>[\w\-]+)/$',
+        MatchDetail.as_view(), name="mutual_like_detail"),
     url(r'^likes/$', ListLikesView.as_view(), name="likes"),
     url(r'^likes/(?P<pk>[\w\-]+)/$', LikeDetail.as_view(), name='like_detail'),
     url(
@@ -69,8 +78,10 @@ urlpatterns = [
         djoserviews.UserCreateView.as_view(),
         name='user-create'
     ),
-    url(r'^auth/users/confirmation/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$', views.user_confirm, name='user_confirm'),
-    url(r'^auth/users/getreset/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$', views.user_reset, name='user_reset'),
+    url(r'^auth/users/confirmation/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$',
+        views.user_confirm, name='user_confirm'),
+    url(r'^auth/users/getreset/(?P<uidb64>[\w\-]+)/(?P<token>[\w\-]+)/$',
+        views.user_reset, name='user_reset'),
     # url(r'^auth/users/confirmation/$', ActivationView.as_view(), name='user_confirmation'),
     # url(r'^auth/users/activate/(?P<username>[\w\-]+)/(?P<token>[\w\-]+)/$', ActivationView.as_view(), name='user_confirm'),
     url(
@@ -83,13 +94,13 @@ urlpatterns = [
         djoserviews.TokenDestroyView.as_view(),
         name='token-destroy'
     ),
-     url(r'^jwt_login/', views.obtain_jwt_token),
-        url(r'^auth-jwt-refresh/', views.refresh_jwt_token),
-        url(r'^auth-jwt-verify/', views.verify_jwt_token),
+    url(r'^jwt_login/', views.obtain_jwt_token),
+    url(r'^auth-jwt-refresh/', views.refresh_jwt_token),
+    url(r'^auth-jwt-verify/', views.verify_jwt_token),
     url(r'^auth/', include('djoser.urls')),
-        url(r'^$', generic.RedirectView.as_view(
-             url='/api/', permanent=False)),
-        url(r'^api/$', get_schema_view()),
+    url(r'^$', generic.RedirectView.as_view(
+        url='/api/', permanent=False)),
+    url(r'^api/$', get_schema_view()),
     url(r'^api/auth/', include(
         'rest_framework.urls', namespace='rest_framework')),
     url(r'^api/auth/token/obtain/$', TokenObtainPairView.as_view()),
@@ -105,7 +116,7 @@ urlpatterns = [
     # url(r'^rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', allauthemailconfirmation,
     # name="account_confirm_email"),
 
-      # url(r'^registration/verify-email/', VerifyEmailView.as_view(), name='rest_verify_email'),
+    # url(r'^registration/verify-email/', VerifyEmailView.as_view(), name='rest_verify_email'),
     #       url(r'^rest-auth/registration/account-email-verification-sent/', views.django_rest_auth_null, name='account_email_verification_sent'),
     # url(r'^rest-auth/registration/account_confirm_email/$', views.django_rest_auth_null, name='account_confirm_email'),
     # url(r'^password-reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.django_rest_auth_null, name='password_reset_confirm'),
@@ -121,4 +132,4 @@ urlpatterns = [
     # url(r'^confirm-email/(?P<key>[-:\w]+)/$', confirm_email = ConfirmEmailView.as_view(),
     #     name="account_confirm_email"),
 
-    ]
+]

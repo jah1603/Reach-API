@@ -15,6 +15,7 @@ from math import sin, cos, sqrt, atan2, radians
 #
 # print("Distance:", distance)
 
+
 def approximate_distance_between_two_points(lat1, long1, lat2, long2):
 
     # method for distance calculation

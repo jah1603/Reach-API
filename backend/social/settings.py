@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from social_reach.access_tokens_fb import facebook_app_token , facebook_access_token
+from social_reach.access_tokens_fb import facebook_app_token, facebook_access_token
 from social_reach.email_details import password
 import json
 from datetime import datetime, timedelta
@@ -20,19 +20,19 @@ TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
 DATABASE_PATH = os.path.join(BASE_DIR, 'social_reach.db')
 
-FACEBOOK_APP_ID=str('facebook_app_token')
-FACEBOOK_APP_SECRET= str('facebook_access_token')
+FACEBOOK_APP_ID = str('facebook_app_token')
+FACEBOOK_APP_SECRET = str('facebook_access_token')
 
 TEMPLATE_DIRS = (
     TEMPLATE_PATH,
 )
 
 TEMPLATES = [
-  {
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             TEMPLATE_PATH,
-                ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -45,7 +45,7 @@ TEMPLATES = [
             ],
         },
     },
-    ]
+]
 
 # SETS UP AUTH
 REST_FRAMEWORK = {
@@ -54,7 +54,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-'rest_framework_jwt.authentication.JSONWebTokenAuthentication',        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
     )
 }
@@ -63,7 +64,6 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': timedelta(hours=1),
     'JWT_ALLOW_REFRESH': True,
 }
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -113,11 +113,11 @@ INSTALLED_APPS = [
     'access_tokens',
 ]
 
-EMAIL_USE_TLS=True
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='reach.dating@gmail.com'
-EMAIL_HOST_PASSWORD= password
-EMAIL_PORT=587
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'reach.dating@gmail.com'
+EMAIL_HOST_PASSWORD = password
+EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DJOSER = {
@@ -125,11 +125,11 @@ DJOSER = {
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {'activation': 'djoser.email.ActivationEmail',
-'confirmation': 'djoser.email.ConfirmationEmail',
-'password_reset': 'djoser.email.PasswordResetEmail',},
+                    'confirmation': 'djoser.email.ConfirmationEmail',
+                    'password_reset': 'djoser.email.PasswordResetEmail', },
     'EMAIL': {'activation': 'social_reach.email.ActivationEmail',
-    'confirmation': 'djoser.email.ConfirmationEmail',
-    'password_reset': 'social_reach.email.PasswordResetEmail',},
+              'confirmation': 'djoser.email.ConfirmationEmail',
+              'password_reset': 'social_reach.email.PasswordResetEmail', },
     'SEND_CONFIRMATION_EMAIL': True,
 }
 
@@ -139,7 +139,7 @@ CORS_ORIGIN_WHITELIST = (
 
 SITE_ID = 1
 
-#customisaing the token
+# customisaing the token
 #
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -166,7 +166,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-        'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -245,7 +245,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 LANGUAGE_CODE = 'en-us'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
+# Absolute path to the media directory
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TIME_ZONE = 'UTC'
 
@@ -259,7 +260,7 @@ STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
-    )
+)
 
 
 # Static files (CSS, JavaScript, Images)

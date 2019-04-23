@@ -1,5 +1,4 @@
-from access_tokens import facebook_app_token , facebook_access_token
-
+from access_tokens import facebook_app_token, facebook_access_token
 
 
 facebook = OpenFacebook(facebook_access_token)

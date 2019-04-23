@@ -22,7 +22,6 @@ class InstagramScraper:
             return choice(self.user_agents)
         return choice(_user_agents)
 
-
     def __request_url(self, url):
         try:
             self.__random_agent()
@@ -30,7 +29,7 @@ class InstagramScraper:
                                                                                                  'https': self.proxy})
             response.raise_for_status()
         except requests.HTTPError:
-                return response.text
+            return response.text
         except requests.RequestException:
             raise requests.RequestException
         else:
@@ -41,13 +40,15 @@ class InstagramScraper:
         soup = BeautifulSoup(html, 'html.parser')
         body = soup.find('body')
         script_tag = body.find('script')
-        raw_string = script_tag.text.strip().replace('window._sharedData =', '').replace(';', '')
+        raw_string = script_tag.text.strip().replace(
+            'window._sharedData =', '').replace(';', '')
         return json.loads(raw_string)
 
     def scrape_instagram_followers(self, instagram_handle):
         results = None
         try:
-            response = self.__request_url("https://www.instagram.com/" + instagram_handle)
+            response = self.__request_url(
+                "https://www.instagram.com/" + instagram_handle)
             json_data = self.extract_json_data(response)
             followers = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_followed_by']['count']
         except Exception as e:

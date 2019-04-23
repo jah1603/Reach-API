@@ -45,7 +45,6 @@ class TwitterScraper:
         #     'window._sharedData =', '').replace(';', '')
         # return json.loads(raw_string)
 
-
     def scrape_twitter_followers(self, twitter_handle):
         url = 'https://www.twitter.com/' + twitter_handle
         r = requests.get(url)

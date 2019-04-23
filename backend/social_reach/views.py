@@ -491,13 +491,11 @@ class reachRegistrationView(RegistrationView):
 
 def add_page(request, category_slug_url):
         cat_list = get_category_list()
-	print category_slug_url
 	try:
 		category = Category.objects.filter(slug=category_slug_url)[0]
 	except Category.DoesNotExist:
 		category = None
 
-	print category
 	form = PageForm()
 	if request.method == 'POST':
 		form = PageForm(request.POST)
@@ -508,7 +506,7 @@ def add_page(request, category_slug_url):
 			page.save()
 			return show_category(request, category_slug_url)
 		else:
-			print form.errors
+			print (form.errors)
 	_context = {
 		'form': form,
 		'category': category,

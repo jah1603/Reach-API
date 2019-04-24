@@ -4,7 +4,7 @@ import requests
 
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from rest_framework import generics
-from activation_tokens import TokenGenerator
+from .activation_tokens import TokenGenerator
 from datetime import datetime
 from .models import Category
 from .distance import approximate_distance_between_two_points
@@ -44,7 +44,7 @@ from django.template.loader import render_to_string
 from social_reach.instagram_scraper import InstagramScraper
 from social_reach.twitter_scraper import TwitterScraper
 from social_reach.youtube_scraper import YoutubeScraper
-from access_tokens_fb import facebook_app_token, facebook_access_token
+from .access_tokens_fb import facebook_app_token, facebook_access_token
 
 from allauth.account.models import EmailConfirmation, EmailConfirmationHMAC
 from django.contrib.auth import get_user_model

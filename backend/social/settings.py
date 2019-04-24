@@ -134,7 +134,9 @@ DJOSER = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
+    'localhost:3000/',
+    'reachdating.com',
+    'reachdating.netlify.com'
 )
 
 SITE_ID = 1
@@ -201,8 +203,8 @@ DATABASES = {
         'USER': 'reach22',
         'PASSWORD': 'influencers',
         'NAME': 'reach',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'jah1603.postgres.pythonanywhere-services.com',
+        'PORT': 10667,
     }
 }
 

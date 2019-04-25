@@ -23,15 +23,15 @@ def populate():
     moran = add_user('DylanMoran', 's@mail', 'p')
     davidsdog = add_user('dudley', 's@mail', 'p')
 
-    bondprofile = add_profile(bond, "James Bond", "London", 'profile_images/bond.jpeg',
+    bondprofile = add_profile(bond, "James Bond", 'profile_images/bond.jpeg', "London",
                               'piercebrosnanofficial', 802038, 'ldnmgmt', 23, 'jamesbond007', 104000)
-    mayprofile = add_profile(may, "TheresaPM", "London", 'profile_images/download.jpeg',
+    mayprofile = add_profile(may, "TheresaPM", 'profile_images/download.jpeg', "London",
                              'theresamay', 83750, 'ldnmgmt', 1, 'webcameronuk', 23520)
-    kimkprofile = add_profile(kimk, "KimK", "NYC", 'profile_images/django_kard.jpeg',
+    kimkprofile = add_profile(kimk, "KimK", 'profile_images/django_kard.jpeg', "NYC",
                               'theresamay', 83750, 'ldnmgmt', 5000, 'kanyewest', 4771895)
-    davidsdogprofile = add_profile(davidsdog, "York", "Dudley", 'profile_images/dudley.png',
+    davidsdogprofile = add_profile(davidsdog, "Dudley", 'profile_images/dudley.png', "York",
                                    'doodlesdawg', 2171, 'ldnmgmt', 4343, 'Littleking0007', 286557)
-    moranprof = add_profile(moran, "Dylan Moron", "Cork", 'profile_images/moran.jpg',
+    moranprof = add_profile(moran, "Dylan Moron", 'profile_images/moran.jpg', "Cork",
                             'the_dylan_moran', 12523, 'ldnmgmt', 4, 'foilarmsandhog', 197319)
 
     travel_insta = [{

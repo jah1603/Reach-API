@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
 
-from django.contrib.auth.models import User
-from social_reach.models import Category, Page, ProfileLikedByActiveUser, ProfileGreetedByActiveUser, UserProfile
-import django
 import os
 import sys
 import random
@@ -11,7 +8,11 @@ import random
 # print(sys.path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'social.settings')
 
+import django
 django.setup()
+
+from social_reach.models import Category, Page, ProfileLikedByActiveUser, ProfileGreetedByActiveUser, UserProfile
+from django.contrib.auth.models import User
 
 
 def populate():
@@ -30,7 +31,7 @@ def populate():
                               'theresamay', 83750, 'ldnmgmt', 5000, 'kanyewest', 4771895)
     davidsdogprofile = add_profile(davidsdog, "Dudley", 'profile_images/dudley.png',
                                    'doodlesdawg', 2171, 'ldnmgmt', 4343, 'Littleking0007', 286557)
-    moranprof = add_profile(moran, "Dylan Moron" 'profile_images/moran.jpg',
+    moranprof = add_profile(moran, "Dylan Moron", 'profile_images/moran.jpg',
                             'the_dylan_moran', 12523, 'ldnmgmt', 4, 'foilarmsandhog', 197319)
 
     travel_insta = [{

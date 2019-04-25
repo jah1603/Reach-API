@@ -177,6 +177,9 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
+DEFAULT_INDEX_TABLESPACE = ""
+
+
 ROOT_URLCONF = 'social.urls'
 
 CORS_ALLOW_CREDENTIALS = True

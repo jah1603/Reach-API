@@ -23,15 +23,15 @@ def populate():
     moran = add_user('DylanMoran', 's@mail', 'p')
     davidsdog = add_user('dudley', 's@mail', 'p')
 
-    bondprofile = add_profile(bond, "James Bond", 'profile_images/bond.jpeg',
+    bondprofile = add_profile(bond, "James Bond", "London", 'profile_images/bond.jpeg',
                               'piercebrosnanofficial', 802038, 'ldnmgmt', 23, 'jamesbond007', 104000)
-    mayprofile = add_profile(may, "TheresaPM", 'profile_images/download.jpeg',
+    mayprofile = add_profile(may, "TheresaPM", "London", 'profile_images/download.jpeg',
                              'theresamay', 83750, 'ldnmgmt', 1, 'webcameronuk', 23520)
-    kimkprofile = add_profile(kimk, "KimK", 'profile_images/django_kard.jpeg',
+    kimkprofile = add_profile(kimk, "KimK", "NYC", 'profile_images/django_kard.jpeg',
                               'theresamay', 83750, 'ldnmgmt', 5000, 'kanyewest', 4771895)
-    davidsdogprofile = add_profile(davidsdog, "Dudley", 'profile_images/dudley.png',
+    davidsdogprofile = add_profile(davidsdog, "York", "Dudley", 'profile_images/dudley.png',
                                    'doodlesdawg', 2171, 'ldnmgmt', 4343, 'Littleking0007', 286557)
-    moranprof = add_profile(moran, "Dylan Moron", 'profile_images/moran.jpg',
+    moranprof = add_profile(moran, "Dylan Moron", "Cork", 'profile_images/moran.jpg',
                             'the_dylan_moran', 12523, 'ldnmgmt', 4, 'foilarmsandhog', 197319)
 
     travel_insta = [{
@@ -126,11 +126,11 @@ def add_user(username, email, password):
     return u
 
 
-def add_profile(user, name, picture, instagram_handle, instagram_followers, twitter_handle, twitter_followers, youtube_handle, youtube_followers, likes=0, greetings=0, website=""):
+def add_profile(user, name, picture, location, instagram_handle, instagram_followers, twitter_handle, twitter_followers, youtube_handle, youtube_followers, likes=0, greetings=0, website=""):
 
     if len(UserProfile.objects.filter(user=user)) > 0:
         return UserProfile.objects.get(user=user)
-    prof = UserProfile.objects.get_or_create(user=user, name=name, picture=picture, instagram_handle=instagram_handle, instagram_followers=instagram_followers,
+    prof = UserProfile.objects.get_or_create(user=user, name=name, location=location, picture=picture, instagram_handle=instagram_handle, instagram_followers=instagram_followers,
                                              twitter_handle=twitter_handle, twitter_followers=twitter_followers, youtube_handle=youtube_handle, youtube_followers=youtube_followers)[0]
     prof.save()
     return prof

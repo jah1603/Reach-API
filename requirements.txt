@@ -33,7 +33,7 @@ itypes==1.1.0
 Jinja2==2.10
 MarkupSafe==1.0
 oauthlib==2.1.0
-Pillow==5.2.0
+Pillow==6.2.0
 psycopg2==2.7.5
 pyasn1==0.4.4
 pycparser==2.19
